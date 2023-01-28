@@ -77,33 +77,47 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 //* simple array methods *//
 
-let arr = ["a", "b", "c", "d", "e"];
+// let arr = ["a", "b", "c", "d", "e"];
 
-// SLICE method
-console.log(arr.slice(2));
-console.log(arr.slice(2, 4));
-console.log(arr.slice(-2)); //when you do the minus sign it grabs the last elements
-console.log(arr.slice(1, -2));
-console.log(arr.slice()); // slice
-console.log([...arr]); // spread operator
+// // SLICE method
+// console.log(arr.slice(2));
+// console.log(arr.slice(2, 4));
+// console.log(arr.slice(-2)); //when you do the minus sign it grabs the last elements
+// console.log(arr.slice(1, -2));
+// console.log(arr.slice()); // slice
+// console.log([...arr]); // spread operator
 
-// SPLICE
-//console.log(arr.splice(2));
-arr.splice(-1);
-console.log(arr);
-arr.splice(1, 2);
-console.log(arr);
+// // SPLICE
+// //console.log(arr.splice(2));
+// arr.splice(-1);
+// console.log(arr);
+// arr.splice(1, 2);
+// console.log(arr);
 
-// Reverse
-arr = ["a", "b", "c", "d", "e"];
-const arr2 = ["j", "i", "h", "g", "f"];
-console.log(arr2.reverse());
-console.log(arr2);
+// // Reverse
+// arr = ["a", "b", "c", "d", "e"];
+// const arr2 = ["j", "i", "h", "g", "f"];
+// console.log(arr2.reverse());
+// console.log(arr2);
 
-// concat
-const letters = arr.concat(arr2);
-console.log(letters);
-console.log([...arr, ...arr2]);
+// // concat
+// const letters = arr.concat(arr2);
+// console.log(letters);
+// console.log([...arr, ...arr2]);
 
-// Join
-console.log(letters.join(" - "));
+// // Join
+// console.log(letters.join(" - "));
+
+//* The new at Method *//
+
+const arr = [23, 11, 64];
+console.log(arr[0]);
+console.log(arr.at(0));
+
+// getting last array element
+console.log(arr[arr.length - 1]);
+console.log(arr.slice(-1)[0]);
+console.log(arr.at(-1));
+
+console.log("steve".at(0));
+console.log("steve".at(-1));
