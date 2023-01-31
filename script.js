@@ -82,25 +82,31 @@ const displayMovements = function (movements) {
 
 displayMovements(account1.movements);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance} EUR`;
+};
+calcDisplayBalance(account1.movements);
 
 //* Computing Usernames *//
 
-// const createUsernames = function (accs) {
-//   accs.forEach(function (acc) {
-//     acc.username = acc.owner
-//       .toLowerCase()
-//       .split(" ")
-//       .map((name) => name[0])
-//       .join(""); // inside the array we can call the join method
-//     // without the join method it will look like this s,t,w
-//   });
-// };
+const createUsernames = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(" ")
+      .map((name) => name[0])
+      .join(""); // inside the array we can call the join method
+    // without the join method it will look like this s,t,w
+  });
+};
+createUsernames(accounts);
 
-// createUsernames(accounts);
 // console.log(accounts);
 
 //--------------------------------------------//
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // const currencies = new Map([
 //   ["USD", "United States dollar"],
@@ -267,15 +273,39 @@ GOOD LUCK 😀
 
 //* The filter Method *//
 
-const deposits = movements.filter(function (mov, i, arr) {
-  return mov > 0; // this is a boolean value
-});
+// const deposits = movements.filter(function (mov, i, arr) {
+//   return mov > 0; // this is a boolean value
+// });
+// console.log(movements);
+// console.log(deposits);
+
+// const depositsFor = []; // this is the for loop try not to use
+// for (const mov of movements) if (mov > 0) depositsFor.push(mov);
+// console.log(depositsFor);
+
+// const withdrawals = movements.filter((mov) => mov < 0);
+// console.log(withdrawals);
+
+//* The reduce Method *//
+
 console.log(movements);
-console.log(deposits);
 
-const depositsFor = []; // this is the for loop try not to use
-for (const mov of movements) if (mov > 0) depositsFor.push(mov);
-console.log(depositsFor);
+// accumulator -> SNOWBALL
+// const balance = movements.reduce(function (acc, cur, i, arr) {
+//   console.log(`Iteration ${i}: ${acc}`);
+//   return acc + cur;
+// }, 0);
+const balance = movements.reduce((acc, cur) => acc + cur, 0);
+console.log(balance);
 
-const withdrawals = movements.filter((mov) => mov < 0);
-console.log(withdrawals);
+let balance2 = 0;
+for (const mov of movements) balance2 += mov;
+// the for loop is very unpractical try to use reduce
+console.log(balance2);
+
+// Maximum value
+const max = movements.reduce((acc, mov) => {
+  if (acc > mov) return acc;
+  else return mov;
+}, movements[0]);
+console.log(max);
