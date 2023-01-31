@@ -82,31 +82,33 @@ const displayMovements = function (movements) {
 
 displayMovements(account1.movements);
 
-const createUsernames = function (accs) {
-  accs.forEach(function (acc) {
-    acc.username = acc.owner
-      .toLowerCase()
-      .split(" ")
-      .map((name) => name[0])
-      .join(""); // inside the array we can call the join method
-    // without the join method it will look like this s,t,w
-  });
-};
-
-createUsernames(accounts);
-console.log(accounts);
-
-//--------------------------------------------//
-
-const currencies = new Map([
-  ["USD", "United States dollar"],
-  ["EUR", "Euro"],
-  ["GBP", "Pound sterling"],
-]);
-
-//--------------------------------------------//
-
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+//* Computing Usernames *//
+
+// const createUsernames = function (accs) {
+//   accs.forEach(function (acc) {
+//     acc.username = acc.owner
+//       .toLowerCase()
+//       .split(" ")
+//       .map((name) => name[0])
+//       .join(""); // inside the array we can call the join method
+//     // without the join method it will look like this s,t,w
+//   });
+// };
+
+// createUsernames(accounts);
+// console.log(accounts);
+
+//--------------------------------------------//
+
+// const currencies = new Map([
+//   ["USD", "United States dollar"],
+//   ["EUR", "Euro"],
+//   ["GBP", "Pound sterling"],
+// ]);
+
+//--------------------------------------------//
 
 //* simple array methods *//
 
@@ -240,7 +242,7 @@ GOOD LUCK 😀
 // checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
 
 //* The map Method *//
-const eurToUsd = 1.1;
+// const eurToUsd = 1.1;
 
 // const movementsUSD = movements.map(function (mov) {
 //   return mov * eurToUsd;
@@ -262,3 +264,18 @@ const eurToUsd = 1.1;
 //     )}`
 // );
 // console.log(movementsDescriptions);
+
+//* The filter Method *//
+
+const deposits = movements.filter(function (mov, i, arr) {
+  return mov > 0; // this is a boolean value
+});
+console.log(movements);
+console.log(deposits);
+
+const depositsFor = []; // this is the for loop try not to use
+for (const mov of movements) if (mov > 0) depositsFor.push(mov);
+console.log(depositsFor);
+
+const withdrawals = movements.filter((mov) => mov < 0);
+console.log(withdrawals);
